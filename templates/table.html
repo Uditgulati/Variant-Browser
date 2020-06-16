@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="/static/style.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+  </head>
+  <body>
+    <div>
+      <div id="name">
+        <p class="botText"><span>Variant browser</span></p>
+      </div>
+      <table id="example" class="display" style="width:100%">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>SpeciesId</th>
+                <th>SnpName</th>
+                <th>Chromosome</th>
+                <th>Position</th>
+                <th>Position_2016</th>
+                <th>Alleles</th>
+                <th>Source</th>
+            </tr>
+        </thead>
+      </table>
+      <script>
+        $(document).ready(function() {
+          $('#example').DataTable({
+            "ajax": {
+                "url": "/source",
+                "dataType": "json",
+                "dataSrc": "data",
+                "contentType":"application/json"
+            },
+            "columns": [
+                {"data": "Id"},
+                {"data": "SpeciesId"},
+                {"data": "SnpName"},
+                {"data": "Chromosome"},
+                {"data": "Position"},
+                {"data": "Position_2016"},
+                {"data": "Alleles"},
+                {"data": "Source"}
+            ]
+          });
+        } );
+      </script>
+    </div>
+  </body>
+</html>
